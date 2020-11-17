@@ -1,1 +1,1 @@
-# one_time_pad
+Repository for the Pseudo One-Time-Pad
