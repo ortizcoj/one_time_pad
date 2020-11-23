@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class OneTimePad {
@@ -18,7 +19,7 @@ public class OneTimePad {
      * This method encrypts the message. It first gets the unencrypted message.
      * Then, it goes through every character adding it to an array.
      * For every character, we get the ascii value and convert it to binary.
-     * Then that binary value is XOR´d with the pseudorandom key
+     * Then that binary value is XORÂ´d with the pseudorandom key
      */
     private static String encryptMessage(String unencryptedMessage) {
         int m, n;
@@ -67,7 +68,10 @@ public class OneTimePad {
 		int i;
 		for (i = 0; i < 7; i++)
         {
-            randomBitPattern[i] = ((Math.round(Math.random()*2) % 2 == 0) ? 1 : 0); 
+			SecureRandom secure = new SecureRandom();
+			int rand = secure.nextInt();
+			randomBitPattern[i] = ((Math.round(Math.floorMod(rand, 10)) % 2 == 0) ? 1 : 0); 
+			//System.out.print(randomBitPattern[i]);
         }
 	}
  
